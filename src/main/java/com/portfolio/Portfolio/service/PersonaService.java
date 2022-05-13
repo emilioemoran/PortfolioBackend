@@ -25,10 +25,7 @@ public class PersonaService implements IPersonaService{
     @Autowired
     public PersonaRepository persRepo;
     
-    @Override
-    public List<Persona> verPersonas() {
-        return persRepo.findAll();
-    }
+    
 
     @Override
     public void crearPersona(Persona pers) {

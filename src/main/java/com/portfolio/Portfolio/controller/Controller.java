@@ -53,10 +53,10 @@ public class Controller {
        perService.crearPersona(pers);
     }
     
-    @PostMapping("/edit/persona/estudios")
-    public void editarPersonaEstudios(@RequestBody Persona pers ){
+     @PostMapping("/persona/edit/encabezado/{id}")
+    public void editarPersonaEncabezado(@PathVariable Long id , @RequestBody Encabezado encabezado){
         
-       perService.buscarPersona(pers.getId());
+       perService.editaPersonaEncabezado(id, encabezado);
     }
     
     @PostMapping("/persona/edit/acercade/{id}")
@@ -101,29 +101,6 @@ public class Controller {
        perService.borrarHabilidad(id, habilidad);
     }
     
-    @PostMapping("/persona/edit/encabezado/{id}")
-    public void editarPersonaEncabezado(@PathVariable Long id , @RequestBody Encabezado encabezado){
-        
-       perService.editaPersonaEncabezado(id, encabezado);
-    }
-    
-    @GetMapping ("/ver/personas")
-    @ResponseBody
-    public List<Persona> listaPersonas(){
-        return  perService.verPersonas();
-    }
-    
-    @GetMapping ("/ver/{id}/estudios")
-    @ResponseBody
-    public List<Educacion> listaEstudiosPersonas(@PathVariable Long id){
-        return  perService.verEstudiosPersona(id);
-    }
-    
-    @DeleteMapping("/delete/{id}")
-    public void borrarPersona(@PathVariable Long id){
-        perService.borrarPersona(id);
-    }
-    
     @PostMapping("/persona/new/proyecto/{id}")
     public void nuevoProyecto(@PathVariable Long id , @RequestBody Proyecto proyecto ){
         
@@ -135,5 +112,12 @@ public class Controller {
         
        perService.borrarProyecto(id, proyecto);
     }
+    
+     @GetMapping ("/ver/{id}/estudios")
+    @ResponseBody
+    public List<Educacion> listaEstudiosPersonas(@PathVariable Long id){
+        return  perService.verEstudiosPersona(id);
+    }
+    
     
 }
